@@ -29,7 +29,8 @@ FC_Tests/
 │   ├── AQA_EXAMPLES.md                    # Примеры идеального кода AQA по стандартам проекта
 │   ├── GEMINI.md                          # Инструкции и правила для ИИ-ассистента Gemini
 │   ├── PROJECT_STRUCTURE.md               # Детальная структура проекта (этот файл)
-│   └── TEST_PLAN.md                       # Тест-план и сценарии
+│   ├── TEST_PLAN_BACKEND.md               # Тест-план для бэкенд API и Telegram-бота
+│   └── TEST_PLAN_FRONTEND.md              # Тест-план для фронтенд веб-портала
 │
 ├── fc/                                    # Подмодуль Git: Исходный код тестируемого приложения FitnessCourt (FC)
 │

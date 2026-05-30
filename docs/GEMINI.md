@@ -290,6 +290,31 @@ Check for:
 
 ---
 
+## Test Plan Document Standards
+
+When creating or modifying a test plan (e.g., `TEST_PLAN_BACKEND.md` or `TEST_PLAN_FRONTEND.md`), you MUST strictly follow this structure:
+
+1. **Separate Test Plans**: Separate documents for Backend and Frontend test plans.
+2. **Test ID Legend**: Place a legend at the beginning of the document explaining all category prefixes:
+   - **AUTH-B** / **AUTH-F**: Authentication, profile and workspace setup.
+   - **CRM-B** / **CRM-F**: Members directory, profiles, membership plans, freezing.
+   - **CHK-B** / **CHK-F**: Transactions, payments recording, checkout.
+   - **SCAN-B** / **SCAN-F**: QR scanner, checks, checkins feed.
+   - **BOT-B** / **BOT-F**: Telegram bot commands, linking, instructions.
+   - **OPS-B** / **OPS-F**: Operations, catalogs (plans list).
+   - **SYS-B** / **SYS-F**: System requirements (isolation, themes, CORS, errors).
+3. **Priority Grouping Blocks**: Group all test scenarios strictly by priority sections (do not mix them):
+   - `### 2.1. Приоритет [P0] — Критические проверки (Critical)`
+   - `### 2.2. Приоритет [P1] — Высокий приоритет (High)`
+   - `### 2.3. Приоритет [P2] — Средний/Низкий приоритет (Medium/Low)`
+4. **Speaking Semantic IDs**: Each test case must have a unique identifier combining the prefix, suffix (B for Backend, F for Frontend), and sequential number (e.g., `AUTH-B01`, `CRM-F02`).
+5. **Interactive Checkbox Checklist**: Format every test case as a markdown checkbox:
+   - `- [ ] **PREFIX-X01** — **`test_case_name`**: Description.`
+6. **Code Referencing**: When writing the Python/Playwright test code for a scenario, you MUST include its Test ID in the docstring or as a comment (e.g., `# Test: AUTH-B01`).
+7. **Progress Tracking**: Once a test case has been successfully implemented, you MUST update the corresponding checkbox in the test plan (`TEST_PLAN_BACKEND.md` or `TEST_PLAN_FRONTEND.md`) to completed (`- [x]`).
+
+---
+
 ## When Writing Plans
 
 Break work into:
