@@ -1,6 +1,6 @@
 # AQA_EXAMPLES.md — Code Reference for Automation Framework
 
-> Detailed code examples supporting rules in `AQA_RULES.md`.
+> Detailed code examples supporting rules in [AQA_RULES.md](file:///Users/jarvis/Projects/FC_Tests/docs/AQA_RULES.md).
 > Read this file when generating new code or reviewing architecture patterns.
 
 ---
@@ -227,6 +227,7 @@ class TestLogin:
     def test_login_with_valid_credentials_redirects_to_dashboard(
         self, page: Page
     ) -> None:
+        """Test: AUTH-F01 — Login with valid credentials"""
         # Arrange
         auth_flow = AuthFlow(page)
 
@@ -239,6 +240,7 @@ class TestLogin:
     def test_login_with_invalid_password_shows_error(
         self, page: Page
     ) -> None:
+        """Test: AUTH-F02 — Login with invalid password"""
         # Arrange
         login_page = LoginPage(page)
 

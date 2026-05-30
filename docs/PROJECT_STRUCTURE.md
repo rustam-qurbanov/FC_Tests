@@ -24,13 +24,13 @@ FC_Tests/
 ├── README.md                              # Инструкции по установке и запуску
 │
 ├── docs/                                  # Папка с документацией проекта
-│   ├── BUG_REPORTS.md                     # Детальные отчеты о багах (Bug Reports) с ID
-│   ├── AQA_RULES.md                       # Контракт AQA: архитектура, правила, чеклисты
-│   ├── AQA_EXAMPLES.md                    # Примеры идеального кода AQA по стандартам проекта
-│   ├── GEMINI.md                          # Инструкции и правила для ИИ-ассистента Gemini
-│   ├── PROJECT_STRUCTURE.md               # Детальная структура проекта (этот файл)
-│   ├── TEST_PLAN_BACKEND.md               # Тест-план для бэкенд API и Telegram-бота
-│   └── TEST_PLAN_FRONTEND.md              # Тест-план для фронтенд веб-портала
+│   ├── [BUG_REPORTS.md](file:///Users/jarvis/Projects/FC_Tests/docs/BUG_REPORTS.md)                     # Детальные отчеты о багах (Bug Reports) с ID
+│   ├── [AQA_RULES.md](file:///Users/jarvis/Projects/FC_Tests/docs/AQA_RULES.md)                       # Контракт AQA: архитектура, правила, чеклисты
+│   ├── [AQA_EXAMPLES.md](file:///Users/jarvis/Projects/FC_Tests/docs/AQA_EXAMPLES.md)                     # Примеры идеального кода AQA по стандартам проекта
+│   ├── [GEMINI.md](file:///Users/jarvis/Projects/FC_Tests/docs/GEMINI.md)                           # Инструкции и правила для ИИ-ассистента Gemini
+│   ├── [PROJECT_STRUCTURE.md](file:///Users/jarvis/Projects/FC_Tests/docs/PROJECT_STRUCTURE.md)                # Детальная структура проекта (этот файл)
+│   ├── [TEST_PLAN_BACKEND.md](file:///Users/jarvis/Projects/FC_Tests/docs/TEST_PLAN_BACKEND.md)                # Тест-план для бэкенд API и Telegram-бота
+│   └── [TEST_PLAN_FRONTEND.md](file:///Users/jarvis/Projects/FC_Tests/docs/TEST_PLAN_FRONTEND.md)               # Тест-план для фронтенд веб-портала
 │
 ├── fc/                                    # Подмодуль Git: Исходный код тестируемого приложения FitnessCourt (FC)
 │

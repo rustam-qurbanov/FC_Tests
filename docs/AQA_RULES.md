@@ -1,7 +1,7 @@
 # AQA_RULES.md — Automation Framework Rules
 
 > **This file is a strict contract.** All generated code MUST follow these rules.
-> Violations are considered bugs. Detailed code examples: see `AQA_EXAMPLES.md`.
+> Violations are considered bugs. Detailed code examples: see [AQA_EXAMPLES.md](file:///Users/jarvis/Projects/FC_Tests/docs/AQA_EXAMPLES.md).
 
 ---
 
@@ -192,5 +192,48 @@ Before any code is complete, verify all items from **Critical Rules** above, plu
 - [ ] Imports ordered and absolute
 - [ ] No sensitive data in logs or committed files
 - [ ] API logic in `app/api/`, not `utils/`
-- [ ] Components inherit BasePage and use its wrappers (no raw `page.locator()`)
+- [ ] Components inherit BasePage and use its wrappers (no raw page.locator())
 - [ ] BasePage methods cover all needed interactions (extend if missing)
+
+---
+
+## Test Plan & Progress Tracking Standards
+
+When creating or modifying a test plan (e.g., `docs/TEST_PLAN_BACKEND.md` or `docs/TEST_PLAN_FRONTEND.md`), you MUST strictly follow this structure:
+
+1. **Separate Test Plans**: Separate documents for Backend and Frontend test plans.
+2. **Test ID Legend**: Place a legend at the beginning of the document explaining all category prefixes:
+   - **AUTH-B** / **AUTH-F**: Authentication, profile and workspace setup.
+   - **CRM-B** / **CRM-F**: Members directory, profiles, membership plans, freezing.
+   - **CHK-B** / **CHK-F**: Transactions, payments recording, checkout.
+   - **SCAN-B** / **SCAN-F**: QR scanner, checks, checkins feed.
+   - **BOT-B** / **BOT-F**: Telegram bot commands, linking, instructions.
+   - **OPS-B** / **OPS-F**: Operations, catalogs (plans list).
+   - **SYS-B** / **SYS-F**: System requirements (isolation, themes, CORS, errors).
+3. **Priority Grouping Blocks**: Group all test scenarios strictly by priority sections (do not mix them):
+   - `### 2.1. Приоритет [P0] — Критические проверки (Critical)`
+   - `### 2.2. Приоритет [P1] — Высокий приоритет (High)`
+   - `### 2.3. Приоритет [P2] — Средний/Низкий приоритет (Medium/Low)`
+4. **Speaking Semantic IDs**: Each test case must have a unique identifier combining the prefix, suffix (B for Backend, F for Frontend), and sequential number (e.g., `AUTH-B01`, `CRM-F02`).
+5. **Interactive Checkbox Checklist**: Format every test case as a markdown checkbox:
+   - `- [ ] **PREFIX-X01** — **`test_case_name`**: Description.`
+6. **Code Referencing**: When writing the Python/Playwright test code for a scenario, you MUST include its Test ID in the docstring or as a comment (e.g., `# Test: AUTH-B01` or `"""Test: AUTH-B01"""`).
+7. **Progress Tracking**: Once a test case has been successfully implemented, you MUST update the corresponding checkbox in the test plan (`docs/TEST_PLAN_BACKEND.md` or `docs/TEST_PLAN_FRONTEND.md`) to completed (`- [x]`).
+
+---
+
+## Bug Investigation & XFAIL Protocol
+
+To avoid pre-emptive assumptions and hidden/unreported bugs, always follow this sequence strictly when writing, running, or refactoring tests:
+
+1. **Run Tests Cleanly First**: Always run the test suite *without* any `xfail` / `skip` decorators or conftest interceptors first when exploring a new user profile or new application state.
+2. **Collect Empirical Evidence**: Verify that the tests actually fail on the UI/API. Capture and save screenshots, HTML dumps, or traces of the failures directly in the `artifacts/` directory.
+3. **Log Bug Reports with IDs**: Prior to writing any pytest/test decorators or config markers, document every single failure in `docs/BUG_REPORTS.md` with detailed description, severity, and steps to reproduce, and assign it a unique Bug ID (e.g., `[BUG-01]`).
+4. **Annotate Tests with Bug IDs**: Only after the bug has been logged and screenshotted, apply `pytest.mark.xfail` or modify `conftest.py` dynamic mark collection, and always specify the exact Bug ID in the `reason` or a comment next to it (e.g., `reason="[BUG-01] Last Name input is disabled"`). Never add `xfail` preemptively without a corresponding bug report and screenshot.
+
+---
+
+## Git Submodule & Branching Rules
+
+1. **Always Check Main**: Before starting any testing or development work, you MUST check the remote `main` branch of the submodule repository (`fc`) to verify if any hotfixes or changes were merged. Compare the active development branch against `origin/main` to identify and report any discrepancies.
+2. **Strict Development Branch**: Testing code and logic changes must ONLY be developed, merged, and committed inside the `feature/development` branch of the `fc` repository. Never push directly to `main` in the shared repository.
